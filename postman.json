@@ -1,0 +1,151 @@
+{
+  "info": {
+    "_postman_id": "airbnb-api-2025",
+    "name": "AIRBNB API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": { "raw": "http://localhost:5000/api/v1/user/create-user", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "v1", "user", "create-user"] }
+          }
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Srayo\",\n  \"password\": \"password\"\n}"
+            },
+            "url": { "raw": "http://localhost:5000/api/v1/user/login", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "v1", "user", "login"] }
+          }
+        },
+        {
+          "name": "Get Logged User",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "http://localhost:5000/api/v1/user/logged-user", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "v1", "user", "logged-user"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Owners",
+      "item": [
+        {
+          "name": "Create Owner",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"John Owner\",\n  \"email\": \"owner@example.com\"\n}" },
+            "url": { "raw": "http://localhost:5000/api/v1/owners", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "v1", "owners"] }
+          }
+        },
+        {
+          "name": "Get All Owners",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "http://localhost:5000/api/v1/owners", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "v1", "owners"] }
+          }
+        },
+        {
+          "name": "Get Owner by ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "http://localhost:5000/api/v1/owners/:id", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "v1", "owners", ":id"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Properties",
+      "item": [
+        {
+          "name": "Create Property",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sea View Apartment\",\n  \"about\": \"Nice place by the beach\",\n  \"ownerid\": \"OWNER_ID_HERE\",\n  \"location\": \"Miami, USA\",\n  \"review\": \"5 stars\",\n  \"pricePerDay\": 120\n}"
+            },
+            "url": { "raw": "http://localhost:5000/api/v1/properties", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "v1", "properties"] }
+          }
+        },
+        {
+          "name": "Get All Properties",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "http://localhost:5000/api/v1/properties", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "v1", "properties"] }
+          }
+        },
+        {
+          "name": "Get Property by ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "http://localhost:5000/api/v1/properties/:id", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "v1", "properties", ":id"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reservations",
+      "item": [
+        {
+          "name": "Create Reservation",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"userId\": \"USER_ID_HERE\",\n  \"ownerId\": \"OWNER_ID_HERE\",\n  \"propertyId\": \"PROPERTY_ID_HERE\",\n  \"checkInDate\": \"2025-09-01\",\n  \"checkOutDate\": \"2025-09-05\",\n  \"numberOfGuests\": 2,\n  \"numberOfRooms\": 1,\n  \"contactNumber\": \"1234567890\",\n  \"specialRequests\": \"Near pool\",\n  \"totalPrice\": 480,\n  \"paymentStatus\": 1,\n  \"status\": 1\n}"
+            },
+            "url": { "raw": "http://localhost:5000/api/v1/reservations", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "v1", "reservations"] }
+          }
+        },
+        {
+          "name": "Get All Reservations",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "http://localhost:5000/api/v1/reservations", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "v1", "reservations"] }
+          }
+        },
+        {
+          "name": "Get Reservation by ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "http://localhost:5000/api/v1/reservations/:id", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "v1", "reservations", ":id"] }
+          }
+        }
+      ]
+    }
+  ]
+}
